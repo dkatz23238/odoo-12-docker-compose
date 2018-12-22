@@ -2,6 +2,8 @@ version: '2'
 services:
   db:
     image: postgres:9.5
+    volumes:
+      - ./volumes/postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=odoo
       - POSTGRES_USER=odoo
@@ -18,6 +20,9 @@ services:
     command: -- --dev=reload
 #    command: odoo scaffold /mnt/extra-addons/test_module
     volumes:
+     volumes:
+      - ./volumes/odoo/filestore:/opt/odoo/data/filestore
+      - ./volumes/odoo/sessions:/opt/odoo/data/sessions
       - ./addons:/mnt/extra-addons
       - ./etc:/etc/odoo
     restart: always             # run as a service
