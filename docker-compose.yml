@@ -1,7 +1,7 @@
 version: '2'
 services:
     db:
-        # al definir un name no se puede escalar
+        
         container_name: db
         image: postgres:9.5
         environment:
