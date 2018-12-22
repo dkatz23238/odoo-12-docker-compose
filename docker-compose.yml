@@ -17,15 +17,6 @@ services:
             # - db
         depends_on:
             - db
-        # TODO analizar si aportan
-        # links:
-        #     - db:db
-        # hostname: elasticsearch
-        # restart: always
-        # dns: 172.17.42.1
-        # entrypoint: ./wait-for-it.sh db:5432
-        # expose:
-        # command: --load=$load_modues --addons-path=$addons_path ${AAA}
         ports:
             - "8069:8069"
         volumes:
