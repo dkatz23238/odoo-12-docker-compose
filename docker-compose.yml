@@ -19,7 +19,6 @@ services:
     tty: true
     command: -- --dev=reload
 #    command: odoo scaffold /mnt/extra-addons/test_module
-    volumes:
      volumes:
       - ./volumes/odoo/filestore:/opt/odoo/data/filestore
       - ./volumes/odoo/sessions:/opt/odoo/data/sessions
