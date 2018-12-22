@@ -1,25 +1,21 @@
-version: '2'
+version: '3.3'
 services:
-  db:
+
+  postgres:
     image: postgres:9.5
     volumes:
       - ./volumes/postgres:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=odoo
-      - POSTGRES_USER=odoo
-      - POSTGRES_DB=postgres
-    restart: always             # run as a service
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
 
-  odoo12:
-    image: odoo:12.0
-    depends_on:
-      - db
+  odoo:
+    image: elicocorp/odoo:12.0
+    command: start
     ports:
-      - "8071:8069"
-    tty: true
-    command: -- --dev=reload
-#    command: odoo scaffold /mnt/extra-addons/test_module
-     volumes:
+      - 8069:8069
+    links:
+      - postgres:db
+    volumes:
       - ./volumes/odoo/filestore:/opt/odoo/data/filestore
       - ./volumes/odoo/sessions:/opt/odoo/data/sessions
-    restart: always             # run as a service
