@@ -23,6 +23,4 @@ services:
      volumes:
       - ./volumes/odoo/filestore:/opt/odoo/data/filestore
       - ./volumes/odoo/sessions:/opt/odoo/data/sessions
-      - ./addons:/mnt/extra-addons
-      - ./etc:/etc/odoo
     restart: always             # run as a service
